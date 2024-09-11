@@ -110,3 +110,16 @@ initSwiper();
 window.addEventListener('resize', function () {
     initSwiper();
 });
+
+
+const mainButton = document.querySelector('.mainsbutton');
+
+const buttons = document.querySelectorAll('.sbutton');
+
+mainButton.addEventListener('click', () => {
+    buttons.forEach(button => {
+        button.classList.toggle('active');
+    });
+});
+
+

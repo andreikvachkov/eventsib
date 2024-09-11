@@ -111,7 +111,7 @@ img {
     .container {
         max-width: 100%;
         width: auto;
-        margin: 0 1.25rem;
+        margin: 0 1.5625rem;
         height: 100%;
     }
 }
@@ -121,7 +121,8 @@ img {
 header {
     padding: 2.1875rem 0;
     /* position: absolute; */
-    z-index: 22;
+    position: relative;
+    z-index: 5555;
     width: 100%;
     left: 0;
     right: 0;
@@ -130,10 +131,21 @@ header {
 header.main_page {
     background: none;
     position: absolute;
+    z-index: 5555;
 }
 .header__wrap {
     display: flex;
     align-items: center;
+}
+header.scroll .header__wrap {
+    position: fixed;
+    width: 90rem;
+    border: 0.3125rem solid rgba(255, 255, 255, 0.1);
+    border-radius: 4.4375rem;
+    backdrop-filter: blur(7.15rem);
+    background: rgba(255, 161, 66, 0.15);
+    padding: 1.1875rem 3.25rem;
+    z-index: 5555;
 }
 .header__logo img {
     width: 9.6875rem;
@@ -236,10 +248,121 @@ header.main_page {
 }
 .header__mobile__btn {
     display: none;
+    border: 0.25rem solid rgba(255, 255, 255, 0.1);
+    border-radius: 2.25rem;
+    backdrop-filter: blur(7.15rem);
+    background: rgba(255, 255, 255, 0.1);
+    align-items: center;
+    justify-content: center;
+    width: 4.6875rem;
+    height: 4.6875rem;
 }
 .header__mobile__btn svg {
-    width: 4.6875rem;
+    width: 2.625rem;
+    height: 1.5rem;
+}
+
+header.scroll .header__logo img {
+    width: 6.75rem;
     height: auto;
+}
+header.scroll .header__wrap nav {
+    border: none;
+    border-radius: 4.4375rem;
+    backdrop-filter: none;
+    background: none;
+    padding: 0;
+    margin-left: 18.25rem;
+}
+header.scroll .header__wrap nav > ul {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+header.scroll .header__wrap nav ul li {
+    position: relative;
+}
+header.scroll .header__wrap nav ul li.haschildren {
+    position: relative;
+}
+header.scroll .header__wrap nav ul li.haschildren > .submenu {
+    position: absolute;
+    right: 0;
+    display: none;
+    padding-right: 3.75rem;
+    padding-top: 3.75rem;
+}
+header.scroll .header__wrap nav ul li.haschildren:hover .submenu {
+    display: block;
+}
+header.scroll .header__wrap nav ul li.haschildren > .submenu .submenu__container {
+    border-radius: 1.25rem;
+    background: var(--white);
+    padding: 1.75rem 3.125rem 1.5rem 2.5rem;
+    position: relative;
+    /* top: calc(100% + 3.75rem);
+    right: 35%; */
+}
+
+header.scroll .header__wrap nav ul li.haschildren > .submenu .submenu__container::before {
+    position: absolute;
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg width='32' height='35' viewBox='0 0 32 35' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.00590031 28.9191C0.003738 28.9058 0.0017709 28.8923 0 28.8786L0.00590031 28.9191C0.605607 32.6114 16.2207 21.9287 25.6508 4.84651C35.1149 -12.2972 30.4269 20.4476 29.1946 34.7341L0.663514 33.4329L0.00590031 28.9191Z' fill='white' /%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    width: 2rem;
+    height: 2.1875rem;
+    top: -1.625rem;
+    right: 2.125rem;
+}
+header.scroll .header__wrap nav ul li.haschildren > .submenu ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4375rem;
+}
+header.scroll .header__wrap nav ul li.haschildren > .submenu ul li a {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 1.125rem;
+    color: var(--black);
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+header.scroll .header__wrap nav ul li.haschildren > .submenu ul li a:hover {
+    color: var(--orange);
+}
+header.scroll .header__wrap nav > ul > li::before {
+    position: absolute;
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg width='14' height='13' viewBox='0 0 14 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='6.95221' cy='6.70245' r='6.27838' fill='%232E60FD' /%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    width: 0.875rem;
+    height: 0.875rem;
+    left: -1.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+header.scroll .header__wrap nav > ul > li > a {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: var(--white);
+}
+header.scroll .header__tel {
+    display: block;
+    margin: 0 0 0 auto;
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 121%;
+    color: var(--white);
+}
+header.scroll .header__mobile__btn {
+    display: none;
 }
 @media (max-width: 768px) {
     header {
@@ -266,7 +389,49 @@ header.main_page {
         display: block;
     }
     .header__mobile__btn svg {
-        width: 4.6875rem;
+        width: 2.625rem;
+        height: auto;
+    }
+
+    header.scroll .header__wrap {
+        position: fixed;
+        width: 21.0625rem;
+        border: 0.3125rem solid rgba(255, 255, 255, 0.1);
+        border-radius: 2.5625rem;
+        backdrop-filter: blur(7.15rem);
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0.75rem 1.6875rem;
+        z-index: 5555;
+    }
+
+    header.scroll .header__logo img {
+        width: 4rem;
+        height: auto;
+    }
+    header.scroll .header__wrap nav {
+        display: none;
+    }
+
+    header.scroll .header__tel {
+        display: none;
+        margin: 0 0 0 auto;
+        font-family: var(--font-family);
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 121%;
+        color: var(--white);
+    }
+    header.scroll .header__mobile__btn {
+        display: flex;
+        border: 0.125rem solid rgba(255, 255, 255, 0.1);
+        border-radius: 2.25rem;
+        backdrop-filter: blur(7.15rem);
+        background: #ffa142;
+        width: 2.75rem;
+        height: 2.75rem;
+    }
+    header.scroll .header__mobile__btn svg {
+        width: 1.625rem;
         height: auto;
     }
 }
@@ -542,7 +707,7 @@ header.main_page {
         display: flex;
         flex-direction: column;
         gap: 3.75rem;
-        margin: 0 -1.25rem;
+        margin: 0 -1.5625rem;
     }
     .project__item {
         position: relative;
@@ -795,7 +960,7 @@ header.main_page {
     .choose__main {
         position: relative;
         overflow: hidden;
-        margin: 0 -1.25rem;
+        margin: 0 -1.5625rem;
     }
     .choose__item:nth-child(1) {
         width: 32.0625rem;
@@ -3600,7 +3765,7 @@ footer nav ul li a {
 
 /* mobile__menu end  */
 
-.all__top {
+/* .all__top {
     position: fixed;
     z-index: 7777;
     right: 2.6875rem;
@@ -3621,4 +3786,157 @@ footer nav ul li a {
         width: 2.8125rem;
         height: auto;
     }
+} */
+
+/* socies btn start  */
+.sbuttons {
+    position: fixed;
+    right: 2.6875rem;
+    bottom: 6.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
 }
+.sbuttons a {
+    width: 4.6875rem;
+    height: 4.6875rem;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition:
+        opacity 0.5s ease,
+        top 0.5s ease;
+    cursor: pointer;
+}
+.sbuttons a.mainsbutton {
+    background: #ff9f41;
+    z-index: 44;
+    position: relative;
+    opacity: 1;
+}
+.sbuttons a.mainsbutton::before {
+    content: "";
+    position: absolute;
+    background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16 0C11.758 0.00465856 7.69101 1.69186 4.69144 4.69144C1.69186 7.69101 0.00465856 11.758 0 16V29.44C0 30.119 0.269713 30.7701 0.749807 31.2502C1.2299 31.7303 1.88105 32 2.56 32H16C20.2435 32 24.3131 30.3143 27.3137 27.3137C30.3143 24.3131 32 20.2435 32 16C32 11.7565 30.3143 7.68687 27.3137 4.68629C24.3131 1.68571 20.2435 0 16 0ZM21.12 20.48H10.24C9.90052 20.48 9.57495 20.3451 9.3349 20.1051C9.09486 19.8651 8.96 19.5395 8.96 19.2C8.96 18.8605 9.09486 18.5349 9.3349 18.2949C9.57495 18.0549 9.90052 17.92 10.24 17.92H21.12C21.4595 17.92 21.7851 18.0549 22.0251 18.2949C22.2651 18.5349 22.4 18.8605 22.4 19.2C22.4 19.5395 22.2651 19.8651 22.0251 20.1051C21.7851 20.3451 21.4595 20.48 21.12 20.48ZM21.12 15.36H10.24C9.90052 15.36 9.57495 15.2251 9.3349 14.9851C9.09486 14.745 8.96 14.4195 8.96 14.08C8.96 13.7405 9.09486 13.4149 9.3349 13.1749C9.57495 12.9349 9.90052 12.8 10.24 12.8H21.12C21.4595 12.8 21.7851 12.9349 22.0251 13.1749C22.2651 13.4149 22.4 13.7405 22.4 14.08C22.4 14.4195 22.2651 14.745 22.0251 14.9851C21.7851 15.2251 21.4595 15.36 21.12 15.36Z' fill='white'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    width: 2rem;
+    height: 2rem;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+.sbuttons a.mainsbutton.active::before {
+    content: "";
+    position: absolute;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.6562 4L4 20.6562M4 4L20.6562 20.6562' stroke='white' stroke-width='6.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    width: 1.5rem;
+    height: 1.5rem;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+.sbuttons a.whatsapp {
+    background: #25d366;
+    z-index: 33;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.sbuttons a.telegram {
+    background: #27a7e7;
+    z-index: 22;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.sbuttons a.telephone {
+    background: #2e60fd;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.sbuttons a.whatsapp.active {
+    bottom: 5.3125rem;
+    opacity: 1;
+}
+.sbuttons a.telegram.active {
+    bottom: 10.625rem;
+    opacity: 1;
+}
+.sbuttons a.telephone.active {
+    bottom: 15.9375rem;
+    opacity: 1;
+}
+
+.sbuttons a.mainsbutton svg {
+    width: 2rem;
+    height: auto;
+}
+.sbuttons a.whatsapp svg {
+    width: 2.0625rem;
+    height: auto;
+}
+.sbuttons a.telegram svg {
+    width: 2.0625rem;
+    height: auto;
+}
+.sbuttons a.telephone svg {
+    width: 1.875rem;
+    height: auto;
+}
+@media (max-width: 768px) {
+    .sbuttons {
+        right: 0.3125rem;
+        bottom: 1.875rem;
+    }
+    .sbuttons a {
+        width: 4rem;
+        height: 4rem;
+    }
+    .sbuttons a.mainsbutton::before {
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+    .sbuttons a.mainsbutton.active::before {
+        width: 1.25rem;
+        height: 1.75rem;
+    }
+    .sbuttons a.whatsapp.active {
+        bottom: 4.625rem;
+        opacity: 1;
+    }
+    .sbuttons a.telegram.active {
+        bottom: 9.25rem;
+        opacity: 1;
+    }
+    .sbuttons a.telephone.active {
+        bottom: 13.875rem;
+        opacity: 1;
+    }
+
+    .sbuttons a.mainsbutton svg {
+        width: 1.75rem;
+        height: auto;
+    }
+    .sbuttons a.whatsapp svg {
+        width: 1.8125rem;
+        height: auto;
+    }
+    .sbuttons a.telegram svg {
+        width: 1.8125rem;
+        height: auto;
+    }
+    .sbuttons a.telephone svg {
+        width: 1.625rem;
+        height: auto;
+    }
+}
+/* socies btn end  */
